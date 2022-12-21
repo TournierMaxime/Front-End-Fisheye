@@ -1,12 +1,17 @@
 @import url("photographer.css");
 
-body {
-  font-family: "DM Sans", sans-serif;
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
-#main {
-  display: flex;
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: auto;
+  font-family: DM Sans;
+  max-width: 1440px;
+  position: relative;
 }
 
 header {
@@ -18,16 +23,6 @@ header {
 }
 
 h1 {
-  color: #d3573c;
-  margin-right: 100px;
-}
-
-h2 {
-  color: #901c1c;
-  margin-right: 100px;
-}
-
-h3 {
   color: #901c1c;
   margin-right: 100px;
 }
@@ -41,50 +36,54 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
-  margin: auto;
+  margin: 100px 0;
+  text-align: center;
 }
 
-.photographer_section article .description {
+.photographer_section article,
+.photographer_section article a {
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-decoration: none;
 }
 
-.photographer_section article h2 {
+.photographer_section article h2,
+.photograph-header div h2 {
   color: #d3573c;
-  font-size: 1.5em;
-  margin: 0.5em 0 0 0;
+  font-size: 36px;
+  font-weight: 400;
 }
 
-.photographer_section article h3 {
+.photographer_section article h3,
+.photograph-header div h3 {
   color: #901c1c;
-  font-size: 1em;
-  margin: 0.5em 0 0 0;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 5px;
 }
 
-.photographer_section article p {
-  font-size: 1em;
-  margin: 0;
-  padding: 0.5em;
-}
-
-.photographer_section article .link img {
-  height: 10em;
-  width: 10em;
+.photographer_section article img,
+.photograph-header img {
+  height: 170px;
+  width: 170px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.photographer_section article div {
+  text-align: center;
+}
+
+.photographer_section article div p,
+.photograph-header div p {
+  font-size: 15px;
 }
 
 .price {
-  color: #525252;
-}
-
-.link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  text-decoration: none;
+  margin-top: 5px;
+  color: #757575;
 }
