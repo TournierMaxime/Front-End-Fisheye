@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
+    <!-- css -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,700&display=swap"
       rel="stylesheet"
     />
+    <!-- fontawesome  -->
+    <script
+      src="https://kit.fontawesome.com/b1f64f6a17.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Fisheye</title>
   </head>
+
   <body>
+    <!-- Header -->
     <header>
       <a href="/">
-        <img src="assets/images/logo.png" alt="Fisheye Home page" class="logo"
-      /></a>
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
       <h1>Nos photographes</h1>
     </header>
+
+    <!-- Main -->
     <main id="main">
-      <div class="photographer_section"></div>
+      <nav class="photographer_section"></nav>
     </main>
-    <script type="module" src="scripts/factories/photographer.js"></script>
-    <script type="module" src="scripts/pages/index.js"></script>
+
+    <!-- JS scripts -->
+    <script
+      type="module"
+      src="./scripts/factories/photographerHomePage.js"
+    ></script>
+    <script type="module" src="./scripts/pages/index.js"></script>
   </body>
 </html>
