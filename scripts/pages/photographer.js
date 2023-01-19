@@ -1,37 +1,29 @@
 async function getPhotographers() {
   const request = await fetch("./../../data/photographers.json");
-  const data = await request.json();
-  const photographers = data.photographers;
-  // et bien retourner le tableau photographers seulement une fois récupéré
-  return { photographers };
+  const { photographers } = await request.json();
+  return photographers;
 }
 
 async function getMedia() {
   const request = await fetch("./../../data/photographers.json");
-  const data = await request.json();
-  const media = data.media;
-
-  // et bien retourner le tableau photographers seulement une fois récupéré
-  return { media };
+  const { media } = await request.json();
+  return media;
 }
 
 function getIdFromUrl() {
-  const search_params = new URLSearchParams(window.location.search);
-  search_params.get("id");
-  if (search_params.has("id")) {
-    let id = Number(search_params.get("id"));
-    if (typeof id === "number" && id > 0) {
-      return id;
-    }
+  const searchParams = new URLSearchParams(window.location.search);
+  const id = searchParams.get("id");
+  if (id && !isNaN(Number(id)) && id > 0) {
+    return Number(id);
   }
   return null;
 }
 
 async function getPhotographerInfo() {
   const id = getIdFromUrl();
-  const thePhotographers = await getPhotographers();
-  const photographerInfo = thePhotographers.photographers.find(
-    (element) => element.id === id
+  const photographers = await getPhotographers();
+  const photographerInfo = photographers.find(
+    (photographer) => photographer.id === id
   );
   return photographerInfo;
 }
@@ -40,96 +32,17 @@ async function addPhotographerInHeader() {
   const photographerInfo = await getPhotographerInfo();
   const photographerHeader = document.getElementById("photograph-header");
   const photographerModel = new MediaFactory(photographerInfo);
-  photographerModel.photographerHeaderFactory(
-    photographerHeader,
-    photographerInfo
-  );
+  console.log(photographerModel);
+  photographerModel.photographerHeader(photographerHeader, photographerInfo);
 }
 
 async function getGoodMediasWithId() {
   const id = getIdFromUrl();
-  const allMedia = await getMedia();
-  const mediaPhotographer = allMedia.media.filter(
+  const media = await getMedia();
+  const mediaPhotographer = media.filter(
     (element) => element.photographerId === id
   );
   return mediaPhotographer;
-}
-
-async function getTagLikes() {
-  const goodMedias = await getGoodMediasWithId();
-  return goodMedias.sort((a, b) => b.likes - a.likes);
-}
-
-async function getTagDates() {
-  const goodMedias = await getGoodMediasWithId();
-  return goodMedias.sort(
-    (a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf()
-  );
-}
-
-async function getTagTitles() {
-  const goodMedias = await getGoodMediasWithId();
-  return goodMedias.sort((a, b) => {
-    if (a.title > b.title) {
-      return 1;
-    } else if (b.title > a.title) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
-}
-
-async function getGoodMedias() {
-  const selectFilters = document.getElementById("pet-select");
-  let goodMedias = [];
-  if (selectFilters.value === "popularity") {
-    goodMedias = await getTagLikes();
-  }
-  if (selectFilters.value === "date") {
-    goodMedias = await getTagDates();
-  }
-  if (selectFilters.value === "title") {
-    goodMedias = await getTagTitles();
-  }
-  return goodMedias;
-}
-
-async function carrousel(media) {
-  const photographCarrousel = document.getElementById("carrousel");
-  const photographerInfo = await getPhotographerInfo();
-  media = media ?? (await getTagLikes());
-  carrouselFactory(photographCarrousel, media, photographerInfo);
-}
-
-async function onSelectOption() {
-  const goodMedias = await getGoodMedias();
-  await carrousel(goodMedias);
-}
-
-async function getAllLikes() {
-  const goodMedias = await getGoodMediasWithId();
-  let likes = 0;
-  for (let i = 0; i < goodMedias.length; i++) {
-    likes += goodMedias[i].likes;
-  }
-  return likes;
-}
-
-async function likeAndPrice() {
-  const allLikes = await getAllLikes();
-  const photographerInfo = await getPhotographerInfo();
-  const likesPrice = document.getElementById("likes-price");
-  likesPrice.innerHTML = `
-    <div class="like">
-      <p id="allNumberLike">${allLikes}</p>
-      <img src="./assets/icons/heart-solid.svg" alt="">
-    </div>
-    
-    <div class="price-day">
-      <p>${photographerInfo.price}€ / jour</p>
-    </div>
-  `;
 }
 
 /** *************|Name on contact form|***************/
@@ -141,9 +54,50 @@ ${photographerInfo.name}
 `;
 }
 
+async function allMedias(media) {
+  const photographCarrousel = document.getElementById("allMedias");
+  const photographerInfo = await getPhotographerInfo();
+  media = media ?? (await getTagLikes());
+  const typeMediaModel = new TypeMediaFactory(photographerInfo);
+  typeMediaModel.typeMediaCards(photographCarrousel, media, photographerInfo);
+}
+
+/** *************|Fonctions lié au changements d'images sur la modal|***************/
+
+function previousImage(indexImg, goodMedias, photographerInfo, imgAndTitle) {
+  if (indexImg === 0) {
+    indexImg = goodMedias.length - 1;
+  } else {
+    indexImg--;
+  }
+  buildImageZoom(goodMedias, photographerInfo, imgAndTitle, indexImg);
+  return indexImg;
+}
+
+function nextImage(indexImg, goodMedias, photographerInfo, imgAndTitle) {
+  if (indexImg === goodMedias.length - 1) {
+    indexImg = 0;
+  } else {
+    indexImg++;
+  }
+  buildImageZoom(goodMedias, photographerInfo, imgAndTitle, indexImg);
+  return indexImg;
+}
+
+function buildImageZoom(goodMedias, photographerInfo, element, index) {
+  element.innerHTML = `
+  ${
+    goodMedias[index].image
+      ? `<img src="./assets/images/media/${photographerInfo.name}/${goodMedias[index].image}" id="zoom-img" alt="photo de ${photographerInfo.name}">`
+      : `<video  controls autoplay id="zoom-video"><source src="assets/images/media/${photographerInfo.name}/${goodMedias[index].video}" id="zoom-video" type="video/mp4" alt="photo de ${photographerInfo.name}"></video>`
+  }
+<h2>${goodMedias[index].title}</h2>
+  `;
+}
+
 /** *************|Fonction INIT pour appeler les fonctions|***************/
 function init() {
-  carrousel();
+  allMedias();
   likeAndPrice();
   getAllLikes();
   addPhotographerInHeader();

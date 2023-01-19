@@ -1,21 +1,7 @@
-import PhotographerFactory from "../factories/photographerHomePage.js";
-
-async function getPhotographers() {
-  const request = await fetch("./../../data/photographers.json");
-  const data = await request.json();
-
-  return data;
-}
-
-async function userDisplay() {
-  const photographerInfo = await getPhotographers();
+async function displayPhotographers() {
+  const photographers = await getPhotographers();
   const photographersSection = document.querySelector(".photographer_section");
-  const photographerModel = new PhotographerFactory(
-    photographerInfo.photographers
-  );
-  photographerModel.getUsersCardDOM(
-    photographersSection,
-    photographerInfo.photographers
-  );
+  const photographerModel = new PhotographerFactory(photographers);
+  photographerModel.createCards(photographersSection, photographers);
 }
-userDisplay();
+displayPhotographers();
