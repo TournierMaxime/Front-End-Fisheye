@@ -1,36 +1,44 @@
-export default class PhotographerFactory {
+class PhotographerFactory {
   constructor(data) {
-    this.name = data.name;
-    this.id = data.id;
-    this.city = data.city;
-    this.country = data.country;
-    this.tagline = data.tagline;
-    this.price = data.price;
-    this.alt = data.alt;
-    this._portrait = data.portrait;
+    Object.assign(this, data);
   }
 
   get portrait() {
     return `assets/photographers/${this._portrait}`;
   }
-  getUsersCardDOM(target, data) {
-    target.innerHTML = data
-      .map(
-        (photographer) =>
-          `
-    <article >
-      <a href="./photographer.html?id=${photographer.id}">
-       <img src="assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}">
-        <h2>${photographer.name}</h2>
-      </a>
-      <div>
-        <h3>${photographer.city} ${photographer.country}</h3>
-        <p>${photographer.tagline}</p>
-        <p class="price">${photographer.price}€/jour</p>
-      </div>
-    </article>
-    `
-      )
-      .join("");
+  createCard(photographer) {
+    return `
+      <article>
+        <a href="./photographer.html?id=${photographer.id}">
+         <img src="assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}">
+          <h2>${photographer.name}</h2>
+        </a>
+        <div>
+          <h3>${photographer.city} ${photographer.country}</h3>
+          <p>${photographer.tagline}</p>
+          <p class="price">${photographer.price}€/jour</p>
+        </div>
+      </article>
+    `;
+  }
+
+  photographerHeader(target, photographer) {
+    target.innerHTML = `
+          <div>
+            <h2 class="test">${photographer.name}</h2>
+            <h3>${photographer.city} ${photographer.country}</h3>
+            <p>${photographer.tagline}</p>
+            <p class="price">${photographer.price}€/jour</p>
+          </div>
+          <div id="bloc-contact">
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          </div>
+          <div id="bloc-picture">
+            <img src="assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}">
+          </div>
+        `;
+  }
+  createCards(target, data) {
+    target.innerHTML = data.map(this.createCard).join("");
   }
 }
