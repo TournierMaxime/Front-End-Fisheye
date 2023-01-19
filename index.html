@@ -23,7 +23,7 @@
   <body>
     <!-- Header -->
     <header>
-      <a href="/">
+      <a href="/" aria-label="page d'accueil de Fisheye">
         <img
           src="assets/images/logo.png"
           class="logo"
@@ -39,10 +39,8 @@
     </main>
 
     <!-- JS scripts -->
-    <script
-      type="module"
-      src="./scripts/factories/photographerHomePage.js"
-    ></script>
-    <script type="module" src="./scripts/pages/index.js"></script>
+    <script src="./scripts/utils/getPhotographers.js"></script>
+    <script src="./scripts/factories/photographerHomePage.js"></script>
+    <script src="./scripts/pages/index.js"></script>
   </body>
 </html>
