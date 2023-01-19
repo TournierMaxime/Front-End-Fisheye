@@ -110,7 +110,7 @@ select:focus > option:checked {
 
 /* CARROUSEL */
 
-.carrousel {
+.allMedias {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
@@ -386,7 +386,6 @@ form textarea {
   width: 100%;
   height: 100%;
   background-color: #db8876;
-  position: absolute;
   display: none;
   justify-content: center;
   align-items: center;
@@ -407,7 +406,7 @@ form textarea {
     margin: 0;
   }
 
-  .carrousel {
+  .allMedias {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     text-align: center;
