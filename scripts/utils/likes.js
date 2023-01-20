@@ -14,7 +14,7 @@ async function likeAndPrice() {
   likesPrice.innerHTML = `
         <div class="like">
           <p id="allNumberLike">${allLikes}</p>
-          <img src="./assets/icons/heart-solid.svg" alt="">
+          <img src="./assets/icons/heart-solid.svg" alt="Bouton like">
         </div>
         
         <div class="price-day">
