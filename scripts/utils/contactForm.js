@@ -1,34 +1,31 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const messageValidate = document.getElementById("form-validation");
-const modal = document.getElementById("contact_modal");
+const formValidation = document.getElementById("form-validation");
+const contactModal = document.getElementById("contact_modal");
+const modal = document.querySelector(".modal");
 const errorMessage = document.querySelectorAll(".error-message");
 const inputBorder = document.querySelectorAll(".input");
 
 function displayModal() {
-  modal.style.display = "flex";
+  contactModal.style.display = "flex";
 }
 
 function closeModal() {
-  modal.style.display = "none";
-  messageValidate.style.display = "none";
+  contactModal.style.display = "none";
   inputBorder.forEach((item) => (item.style.border = "none"));
   form.reset();
   errorMessage.forEach((element) => (element.innerHTML = ""));
 }
 
 window.addEventListener("keydown", (e) => {
-  if (modal.style.display === "flex" && e.key === "Escape") {
+  if (contactModal.style.display === "flex" && e.key === "Escape") {
     closeModal();
   }
 });
 
 window.addEventListener("click", (event) => {
-  if (event.target === modal) {
+  if (event.target === contactModal) {
     closeModal();
   }
 });
@@ -100,8 +97,9 @@ const validate = () => {
 
   // Global message validation
   if (isValidate) {
-    messageValidate.style.display = "flex";
-    console.log("Voici les information du formulaire: ", dataForm);
+    formValidation.style.display = "flex";
+    modal.style.display = "none";
+    console.log("Voici les informations du formulaire: ", dataForm);
   }
 };
 

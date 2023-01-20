@@ -3,9 +3,6 @@ class PhotographerFactory {
     Object.assign(this, data);
   }
 
-  get portrait() {
-    return `assets/photographers/${this._portrait}`;
-  }
   createCard(photographer) {
     return `
       <article>

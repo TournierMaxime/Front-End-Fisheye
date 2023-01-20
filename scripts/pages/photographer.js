@@ -31,8 +31,7 @@ async function getPhotographerInfo() {
 async function addPhotographerInHeader() {
   const photographerInfo = await getPhotographerInfo();
   const photographerHeader = document.getElementById("photograph-header");
-  const photographerModel = new MediaFactory(photographerInfo);
-  console.log(photographerModel);
+  const photographerModel = new PhotographerFactory(photographerInfo);
   photographerModel.photographerHeader(photographerHeader, photographerInfo);
 }
 
@@ -58,7 +57,7 @@ async function allMedias(media) {
   const photographCarrousel = document.getElementById("allMedias");
   const photographerInfo = await getPhotographerInfo();
   media = media ?? (await getTagLikes());
-  const typeMediaModel = new TypeMediaFactory(photographerInfo);
+  const typeMediaModel = new MediaFactory(photographerInfo);
   typeMediaModel.typeMediaCards(photographCarrousel, media, photographerInfo);
 }
 

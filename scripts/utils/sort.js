@@ -40,5 +40,5 @@ async function getGoodMedias() {
 
 async function onSelectOption() {
   const goodMedias = await getGoodMedias();
-  await carrousel(goodMedias);
+  await allMedias(goodMedias);
 }

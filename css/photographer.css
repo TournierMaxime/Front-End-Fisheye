@@ -214,6 +214,7 @@ select:focus > option:checked {
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .arrow-video {
@@ -294,7 +295,7 @@ select:focus > option:checked {
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
+  width: 30em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -383,13 +384,21 @@ form textarea {
 }
 
 #form-validation {
-  width: 100%;
-  height: 100%;
-  background-color: #db8876;
   display: none;
+  width: 35em;
+  height: 20em;
+  background-color: #db8876;
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 35px;
+  margin: auto;
+  border-radius: 5px;
 }
 
 #form-validation button {

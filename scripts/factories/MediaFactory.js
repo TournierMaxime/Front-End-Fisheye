@@ -1,30 +1,6 @@
-class MediaFactory {
-  constructor(data) {
-    Object.assign(this, data);
-  }
-
-  photographerHeader(target, photographer) {
-    target.innerHTML = `
-          <div>
-            <h2 class="test">${photographer.name}</h2>
-            <h3>${photographer.city} ${photographer.country}</h3>
-            <p>${photographer.tagline}</p>
-            <p class="price">${photographer.price}€/jour</p>
-          </div>
-          <div id="bloc-contact">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-          </div>
-          <div id="bloc-picture">
-            <img src="assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}">
-          </div>
-        `;
-  }
-}
-
-class TypeMediaFactory extends MediaFactory {
+class MediaFactory extends PhotographerFactory {
   constructor(data) {
     super(data);
-    this.type = data.type;
   }
   typeMediaCards(target, dataMedia, dataPhotographer) {
     target.innerHTML = dataMedia
