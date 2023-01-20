@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 async function getTagLikes() {
   const goodMedias = await getGoodMediasWithId();
   return goodMedias.sort((a, b) => b.likes - a.likes);

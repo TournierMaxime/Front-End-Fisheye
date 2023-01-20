@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 class MediaFactory extends PhotographerFactory {
   constructor(data) {
     super(data);

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 async function getAllLikes() {
   const goodMedias = await getGoodMediasWithId();
   let likes = 0;

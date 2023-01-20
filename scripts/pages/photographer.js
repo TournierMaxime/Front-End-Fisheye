@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 async function getPhotographers() {
   const request = await fetch("./../../data/photographers.json");
   const { photographers } = await request.json();

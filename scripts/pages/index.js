@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 async function displayPhotographers() {
   const photographers = await getPhotographers();
   const photographersSection = document.querySelector(".photographer_section");

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 class PhotographerFactory {
   constructor(data) {
     Object.assign(this, data);

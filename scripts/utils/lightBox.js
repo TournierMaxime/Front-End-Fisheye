@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /** *************|Zoom Image|***************/
 async function zoom(id) {
   const photographerInfo = await getPhotographerInfo();
