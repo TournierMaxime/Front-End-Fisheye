@@ -2,5 +2,5 @@
 
 ## Démarrer le projet
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+Lancer la commande npm i pour installer eslint
 
