@@ -3,7 +3,7 @@ class PhotographerFactory {
   constructor(data) {
     Object.assign(this, data);
   }
-
+  // Single card photographer
   createCard(photographer) {
     return `
       <article>
@@ -19,7 +19,11 @@ class PhotographerFactory {
       </article>
     `;
   }
-
+  // All cards photographers
+  createCards(target, data) {
+    target.innerHTML = data.map(this.createCard).join("");
+  }
+  // Banner photographer portfolio
   photographerHeader(target, photographer) {
     target.innerHTML = `
           <div>
@@ -35,8 +39,5 @@ class PhotographerFactory {
             <img src="assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}">
           </div>
         `;
-  }
-  createCards(target, data) {
-    target.innerHTML = data.map(this.createCard).join("");
   }
 }

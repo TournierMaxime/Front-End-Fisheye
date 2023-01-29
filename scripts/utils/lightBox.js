@@ -1,19 +1,24 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-/** *************|Zoom Image|***************/
+
+// Lightbox function
 async function zoom(id) {
+  // Retrieve datas
   const photographerInfo = await getPhotographerInfo();
   const goodMedias = await getGoodMedias();
+  // DOM elements
   const imgAndTitle = document.getElementById("image-title");
   const zoomModal = document.getElementById("zoom-modal");
   const leftArrow = document.getElementById("left-arrow");
   const rightArrow = document.getElementById("right-arrow");
+  // Get the correct media
   const thePicture = goodMedias.find((element) => element.id === id);
   let indexImg = goodMedias.indexOf(thePicture);
   zoomModal.style.display = "flex";
+  // Display the correct media
   buildImageZoom(goodMedias, photographerInfo, imgAndTitle, indexImg);
 
-  // clic sur les boutons flêches
+  // Left arrow on click event
   leftArrow.addEventListener("click", () => {
     indexImg = previousImage(
       indexImg,
@@ -23,11 +28,12 @@ async function zoom(id) {
     );
   });
 
+  // Right arrow on click event
   rightArrow.addEventListener("click", () => {
     indexImg = nextImage(indexImg, goodMedias, photographerInfo, imgAndTitle);
   });
 
-  // flêches du clavier
+  // Event with the arrows keyboard
   window.addEventListener("keydown", (e) => {
     if (zoomModal.style.display === "flex" && e.key === "ArrowLeft") {
       indexImg = previousImage(
@@ -43,7 +49,7 @@ async function zoom(id) {
   noScroll();
 }
 
-/** *************|Pas de scroll quand la modal est ouverte|***************/
+// No scroll when the lightbox is open
 function noScroll() {
   const zoomModal = document.getElementById("zoom-modal");
   const body = document.querySelector("body");
@@ -53,7 +59,7 @@ function noScroll() {
   body.style.overflowY = "hidden";
 }
 
-/** *************|Fermer la modal|***************/
+// Close the modal
 function closeZoom() {
   const zoomModal = document.getElementById("zoom-modal");
   const body = document.querySelector("body");
@@ -61,7 +67,7 @@ function closeZoom() {
   body.style.overflowY = "auto";
 }
 
-/** *************|Fermer la modal avec la touche echap|***************/
+// Close modal with the escape keyboard button
 window.addEventListener("keydown", (e) => {
   const zoomModal = document.getElementById("zoom-modal");
   // eslint-disable-next-line no-cond-assign
@@ -70,7 +76,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-/** *************|Fermer la modal en cliquant à coté |***************/
+// Close the modal with the click event
 window.addEventListener("click", (event) => {
   const modal = document.getElementById("zoom-modal");
   if (event.target === modal) {

@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+
+// Retrieve all likes for each medias
 async function getAllLikes() {
   const goodMedias = await getGoodMediasWithId();
   let likes = 0;
@@ -9,6 +11,7 @@ async function getAllLikes() {
   return likes;
 }
 
+// Display like and price elements
 async function likeAndPrice() {
   const allLikes = await getAllLikes();
   const photographerInfo = await getPhotographerInfo();
@@ -25,27 +28,28 @@ async function likeAndPrice() {
       `;
 }
 
+// Increase or decrease likes
 async function increaseLikes(id) {
-  // Récupérez les éléments de l'interface utilisateur
+  // Get the current heart
   const heartImg = document.getElementById(`heart-card-${id}`);
   const likeElement = heartImg.previousElementSibling;
   const allNumberLike = document.getElementById("allNumberLike");
 
-  // Vérifiez si l'utilisateur a déjà liké
+  // If the user has like the content
   if (heartImg.classList.contains("liked")) {
-    // Si oui, retirez le like et mettez à jour l'interface utilisateur
+    // Remove a like on the current media
     let likeCount = likeElement.textContent;
     likeElement.textContent = --likeCount;
     heartImg.classList.remove("liked");
-
+    // Remove a like in the general counter
     let allLikes = allNumberLike.textContent;
     allNumberLike.textContent = --allLikes;
   } else {
-    // Si non, incrémentez le nombre de likes et enregistrez le fait que l'utilisateur a liké
+    // Increase the like on the current media
     let likeCount = likeElement.textContent;
     likeElement.textContent = ++likeCount;
     heartImg.classList.add("liked");
-
+    // Increase in the genral counter
     let allLikes = allNumberLike.textContent;
     allNumberLike.textContent = ++allLikes;
   }

@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+
+// Localize elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -9,10 +11,12 @@ const modal = document.querySelector(".modal");
 const errorMessage = document.querySelectorAll(".error-message");
 const inputBorder = document.querySelectorAll(".input");
 
+// Display the modal with flexbox
 function displayModal() {
   contactModal.style.display = "flex";
 }
 
+// Close modal and reset form
 function closeModal() {
   contactModal.style.display = "none";
   inputBorder.forEach((item) => (item.style.border = "none"));
@@ -20,18 +24,20 @@ function closeModal() {
   errorMessage.forEach((element) => (element.innerHTML = ""));
 }
 
+// Use of keyboard
 window.addEventListener("keydown", (e) => {
   if (contactModal.style.display === "flex" && e.key === "Escape") {
     closeModal();
   }
 });
-
+// Use the mouse
 window.addEventListener("click", (event) => {
   if (event.target === contactModal) {
     closeModal();
   }
 });
 
+// Boolean variable
 let isValidate;
 // Regx for Email
 const regexName = /^[a-zA-Z\s-]{2,35}$/;
@@ -44,6 +50,7 @@ const regexEmail = /^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
 const validate = () => {
   const dataForm = [];
   isValidate = true;
+  // loop on input, label and error elements
   for (let i = 0; i < formData.length; i++) {
     const inputBalise = formData[i].querySelector(".input");
     const labelBalise = formData[i].querySelector("label");
@@ -84,7 +91,7 @@ const validate = () => {
       isValidate = false;
     }
 
-    // Border color
+    // Border color if is an error or valid action
     if (errorMessage !== "") {
       inputBalise.style.border = "3px red solid";
     } else {

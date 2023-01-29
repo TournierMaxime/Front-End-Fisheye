@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+
+// Sort by likes
 async function getTagLikes() {
   const goodMedias = await getGoodMediasWithId();
   return goodMedias.sort((a, b) => b.likes - a.likes);
 }
 
+// Sort by dates
 async function getTagDates() {
   const goodMedias = await getGoodMediasWithId();
   return goodMedias.sort(
@@ -12,6 +15,7 @@ async function getTagDates() {
   );
 }
 
+// Sort by titles
 async function getTagTitles() {
   const goodMedias = await getGoodMediasWithId();
   return goodMedias.sort((a, b) => {
@@ -25,6 +29,7 @@ async function getTagTitles() {
   });
 }
 
+// All filters buttons
 async function getGoodMedias() {
   const selectFilters = document.getElementById("pet-select");
   let goodMedias = [];
@@ -40,6 +45,7 @@ async function getGoodMedias() {
   return goodMedias;
 }
 
+// Event play the filters functions
 async function onSelectOption() {
   const goodMedias = await getGoodMedias();
   await allMedias(goodMedias);

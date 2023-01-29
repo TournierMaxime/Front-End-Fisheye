@@ -4,6 +4,7 @@ class MediaFactory extends PhotographerFactory {
   constructor(data) {
     super(data);
   }
+  // Medias photographers (images and videos)
   typeMediaCards(target, dataMedia, dataPhotographer) {
     target.innerHTML = dataMedia
       .map(

@@ -1,17 +1,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-async function getPhotographers() {
-  const request = await fetch("./../../data/photographers.json");
-  const { photographers } = await request.json();
-  return photographers;
-}
 
+// Retrieve medias data
 async function getMedia() {
   const request = await fetch("./../../data/photographers.json");
   const { media } = await request.json();
   return media;
 }
 
+// Get the photographer ID
 function getIdFromUrl() {
   const searchParams = new URLSearchParams(window.location.search);
   const id = searchParams.get("id");
@@ -21,6 +18,7 @@ function getIdFromUrl() {
   return null;
 }
 
+// Get data for one photographer
 async function getPhotographerInfo() {
   const id = getIdFromUrl();
   const photographers = await getPhotographers();
@@ -30,6 +28,7 @@ async function getPhotographerInfo() {
   return photographerInfo;
 }
 
+// Retrieve data for one photographer in the banner
 async function addPhotographerInHeader() {
   const photographerInfo = await getPhotographerInfo();
   const photographerHeader = document.getElementById("photograph-header");
@@ -37,6 +36,7 @@ async function addPhotographerInHeader() {
   photographerModel.photographerHeader(photographerHeader, photographerInfo);
 }
 
+// Retrieve the correct medias associate with the good photographer
 async function getGoodMediasWithId() {
   const id = getIdFromUrl();
   const media = await getMedia();
@@ -46,7 +46,7 @@ async function getGoodMediasWithId() {
   return mediaPhotographer;
 }
 
-/** *************|Name on contact form|***************/
+// Retrieve the correct name of the photographer in the contact form
 async function nameOnContactForm() {
   const photographerInfo = await getPhotographerInfo();
   const nameContactForm = document.getElementById("name-contact-form");
@@ -55,6 +55,7 @@ ${photographerInfo.name}
 `;
 }
 
+// Retrieve the medias in the caroussel
 async function allMedias(media) {
   const photographCarrousel = document.getElementById("allMedias");
   const photographerInfo = await getPhotographerInfo();
@@ -63,8 +64,7 @@ async function allMedias(media) {
   typeMediaModel.typeMediaCards(photographCarrousel, media, photographerInfo);
 }
 
-/** *************|Fonctions lié au changements d'images sur la modal|***************/
-
+// Back to the previous image
 function previousImage(indexImg, goodMedias, photographerInfo, imgAndTitle) {
   if (indexImg === 0) {
     indexImg = goodMedias.length - 1;
@@ -75,6 +75,7 @@ function previousImage(indexImg, goodMedias, photographerInfo, imgAndTitle) {
   return indexImg;
 }
 
+// Go to the next image
 function nextImage(indexImg, goodMedias, photographerInfo, imgAndTitle) {
   if (indexImg === goodMedias.length - 1) {
     indexImg = 0;
@@ -85,6 +86,7 @@ function nextImage(indexImg, goodMedias, photographerInfo, imgAndTitle) {
   return indexImg;
 }
 
+// Lightbox display elements
 function buildImageZoom(goodMedias, photographerInfo, element, index) {
   element.innerHTML = `
   ${
