@@ -266,6 +266,7 @@ select:focus > option:checked {
   max-width: 900px;
   max-height: 80vh;
   object-fit: contain;
+  width: 35em;
 }
 /* #zoom-video {
   width: 300px;
