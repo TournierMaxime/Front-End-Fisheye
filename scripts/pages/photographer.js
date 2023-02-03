@@ -1,13 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-// Retrieve medias data
-async function getMedia() {
-  const request = await fetch("./../../data/photographers.json");
-  const { media } = await request.json();
-  return media;
-}
-
 // Get the photographer ID
 function getIdFromUrl() {
   const searchParams = new URLSearchParams(window.location.search);
