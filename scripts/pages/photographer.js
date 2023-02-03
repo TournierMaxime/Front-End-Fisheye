@@ -48,11 +48,11 @@ ${photographerInfo.name}
 `;
 }
 
-// Retrieve the medias in the caroussel
-async function allMedias(media) {
+// Retrieve the medias in the caroussel by default "popularity = likes"
+async function allMedias() {
   const photographCarrousel = document.getElementById("allMedias");
   const photographerInfo = await getPhotographerInfo();
-  media = media ?? (await getTagLikes());
+  media = await getTagLikes();
   const typeMediaModel = new MediaFactory(photographerInfo);
   typeMediaModel.typeMediaCards(photographCarrousel, media, photographerInfo);
 }
