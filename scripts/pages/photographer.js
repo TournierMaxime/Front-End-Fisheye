@@ -49,10 +49,10 @@ ${photographerInfo.name}
 }
 
 // Retrieve the medias in the caroussel by default "popularity = likes"
-async function allMedias() {
+async function allMedias(media) {
   const photographCarrousel = document.getElementById("allMedias");
   const photographerInfo = await getPhotographerInfo();
-  media = await getTagLikes();
+  media = media ?? await getTagLikes();
   const typeMediaModel = new MediaFactory(photographerInfo);
   typeMediaModel.typeMediaCards(photographCarrousel, media, photographerInfo);
 }
