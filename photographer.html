@@ -39,8 +39,8 @@
       >
         <div class="modal">
           <header>
-            <h2>Contactez-moi</h2>
-            <h2 id="name-contact-form">Prénom</h2>
+            <h2 tabindex="0">Contactez-moi</h2>
+            <h2 tabindex="0" id="name-contact-form">Prénom</h2>
             <button
               aria-label="Fermer le formulaire"
               class="close-contact-modal"
@@ -105,7 +105,7 @@
           </form>
         </div>
         <div id="form-validation">
-          <h2>Formulaire envoyé.</h2>
+          <h2 aria-label="Formulaire envoyé">Formulaire envoyé.</h2>
           <button
             aria-label="Fermer le formulaire"
             class="contact_button"
@@ -131,20 +131,24 @@
       </div>
 
       <!-- PICTURE MODAL -->
-      <div id="zoom-modal">
+      <div id="zoom-modal" role="dialog">
         <div id="img-ui">
           <button aria-label="média précédent" class="btn-modal">
             <img
+              aria-label="média précédent"
+              tabindex="0"
               src="/assets/icons/left arrow.svg"
               id="left-arrow"
               alt="bouton image précédent"
             />
           </button>
 
-          <div class="image-title" id="image-title"></div>
+          <div tabindex="0" class="image-title" id="image-title"></div>
 
-          <button aria-label="média suivant" class="btn-modal">
+          <button aria-label="média suivant" class="btn-modal" tabindex="0">
             <img
+              aria-label="média suivant"
+              tabindex="0"
               src="/assets/icons/left arrow.svg"
               class="arrow-modal"
               id="right-arrow"
@@ -152,8 +156,9 @@
             />
           </button>
 
-          <button aria-label="lightbox fermée." class="btn-modal">
+          <button aria-label="Fermeture lightbox" class="btn-modal">
             <img
+              tabindex="0"
               id="close-zoom"
               onclick="closeZoom()"
               src="/assets/icons/red-close .svg"
