@@ -18,12 +18,12 @@ async function likeAndPrice () {
   const likesPrice = document.getElementById('likes-price')
   likesPrice.innerHTML = `
         <div class="like">
-          <p id="allNumberLike">${allLikes}</p>
+          <p tabindex="0" id="allNumberLike">${allLikes}</p>
           <img src="/assets/icons/heart-solid.svg" alt="Bouton like">
         </div>
         
         <div class="price-day">
-          <p>${photographerInfo.price}€ / jour</p>
+          <p tabindex="0" >${photographerInfo.price}€ / jour</p>
         </div>
       `
 }
