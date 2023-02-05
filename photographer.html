@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <!-- <link rel="icon" type="image/png" href="assets/favicon.png"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,8 +21,8 @@
 
   <body>
     <header role="banner">
-      <a href="./index.html" aria-label="page d'accueil de Fisheye">
-        <img src="assets/images/logo.png" class="logo" alt="logo fisheye" />
+      <a href="/" aria-label="page d'accueil de Fisheye">
+        <img src="/assets/images/logo.png" class="logo" alt="logo fisheye" />
       </a>
     </header>
 
@@ -47,7 +47,7 @@
               onclick="closeModal()"
             >
               <img
-                src="assets/icons/close.svg"
+                src="/assets/icons/close.svg"
                 id="close-contact-modal"
                 alt="fermer la modal"
               />
@@ -56,7 +56,7 @@
 
           <form action="photographer.html" method="get" onsubmit="validate()">
             <div class="formData">
-              <label for=" first">Prénom</label>
+              <label for="first">Prénom</label>
               <input
                 aria-label="Saisissez votre prénom"
                 class="input"
@@ -135,7 +135,7 @@
         <div id="img-ui">
           <button aria-label="média précédent" class="btn-modal">
             <img
-              src="./assets/icons/left arrow.svg"
+              src="/assets/icons/left arrow.svg"
               id="left-arrow"
               alt="bouton image précédent"
             />
@@ -145,7 +145,7 @@
 
           <button aria-label="média suivant" class="btn-modal">
             <img
-              src="./assets/icons/left arrow.svg"
+              src="/assets/icons/left arrow.svg"
               class="arrow-modal"
               id="right-arrow"
               alt="bouton image suivantes"
@@ -156,7 +156,7 @@
             <img
               id="close-zoom"
               onclick="closeZoom()"
-              src="./assets/icons/red-close .svg"
+              src="/assets/icons/red-close .svg"
               alt="bouton fermer la modal"
             />
           </button>
@@ -165,13 +165,13 @@
     </main>
 
     <!-- JS SCRIPTS -->
-    <script src="./scripts/utils/getData.js"></script>
-    <script src="./scripts/factories/PhotographerFactory.js"></script>
-    <script src="./scripts/factories/MediaFactory.js"></script>
-    <script src="./scripts/utils/likes.js"></script>
-    <script src="./scripts/utils/sort.js"></script>
-    <script src="./scripts/utils/lightBox.js"></script>
-    <script src="./scripts/pages/photographer.js"></script>
-    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/getData.js"></script>
+    <script src="/scripts/factories/PhotographerFactory.js"></script>
+    <script src="/scripts/factories/MediaFactory.js"></script>
+    <script src="/scripts/utils/likes.js"></script>
+    <script src="/scripts/utils/sort.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
