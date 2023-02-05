@@ -14,6 +14,7 @@ const inputBorder = document.querySelectorAll('.input')
 // Display the modal with flexbox
 function displayModal () {
   contactModal.style.display = 'flex'
+  contactModal.focus()
 }
 
 // Close modal and reset form

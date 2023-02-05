@@ -53,6 +53,7 @@ async function zoom (id) {
 function noScroll () {
   const zoomModal = document.getElementById('zoom-modal')
   const body = document.querySelector('body')
+  zoomModal.focus()
   if (zoomModal.style.display === 'flex') {
     body.style.overflowY = 'hidden'
   }
