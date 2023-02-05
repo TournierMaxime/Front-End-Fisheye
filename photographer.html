@@ -36,6 +36,8 @@
         id="contact_modal"
         role="dialog"
         aria-label="formulaire de contact ouvert"
+        aria-modal="true"
+        tabindex="0"
       >
         <div class="modal">
           <header>
@@ -131,9 +133,9 @@
       </div>
 
       <!-- PICTURE MODAL -->
-      <div id="zoom-modal" role="dialog">
+      <div id="zoom-modal" aria-modal="true" tabindex="0" role="dialog" aria-label="Lightbox">
         <div id="img-ui">
-          <button aria-label="média précédent" class="btn-modal">
+          <button class="btn-modal">
             <img
               aria-label="média précédent"
               tabindex="0"
@@ -145,7 +147,7 @@
 
           <div tabindex="0" class="image-title" id="image-title"></div>
 
-          <button aria-label="média suivant" class="btn-modal" tabindex="0">
+          <button class="btn-modal">
             <img
               aria-label="média suivant"
               tabindex="0"
@@ -156,7 +158,7 @@
             />
           </button>
 
-          <button aria-label="Fermeture lightbox" class="btn-modal">
+          <button class="btn-modal">
             <img
               tabindex="0"
               id="close-zoom"

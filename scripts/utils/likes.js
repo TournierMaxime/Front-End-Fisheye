@@ -17,9 +17,9 @@ async function likeAndPrice () {
   const photographerInfo = await getPhotographerInfo()
   const likesPrice = document.getElementById('likes-price')
   likesPrice.innerHTML = `
-        <div class="like">
+        <div class="like" aria-label="Compteur like" tabindex="0">
           <p tabindex="0" id="allNumberLike">${allLikes}</p>
-          <img src="/assets/icons/heart-solid.svg" alt="Bouton like">
+          <img src="/assets/icons/heart-solid.svg" alt="Bouton like en forme de coeur">
         </div>
         
         <div class="price-day">
