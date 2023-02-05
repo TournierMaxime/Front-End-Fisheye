@@ -10,7 +10,11 @@ Lancer la commande npm i pour installer les dépendances
 
 `npm run lint:fix` pour corriger les erreurs
 
+<img width="1901" alt="eslint_p6" src="https://user-images.githubusercontent.com/51545381/216830235-bdc04353-29dd-44b4-a3a6-cf0a6f3b1322.png">
+
 ### Plan de test
+
+[Plan de test FrontEnd - Feuille 1.pdf](https://github.com/TournierMaxime/Front-End-Fisheye/files/10611475/Plan.de.test.FrontEnd.-.Feuille.1.pdf)
 
 
 
