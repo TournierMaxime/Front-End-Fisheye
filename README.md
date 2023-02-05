@@ -16,5 +16,13 @@ Lancer la commande npm i pour installer les dépendances
 
 [Plan de test FrontEnd - Feuille 1.pdf](https://github.com/TournierMaxime/Front-End-Fisheye/files/10611475/Plan.de.test.FrontEnd.-.Feuille.1.pdf)
 
+### AChecker 
 
+- Page index
+
+<img width="601" alt="AChecker_Index" src="https://user-images.githubusercontent.com/51545381/216831511-718e406c-b784-438b-8b09-66fb70fe3f83.png">
+
+-Page photographe
+
+<img width="599" alt="AChecker_Photographe" src="https://user-images.githubusercontent.com/51545381/216831548-db1bfc8b-b850-443b-b26d-36202d8207df.png">
 
